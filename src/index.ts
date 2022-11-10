@@ -1,7 +1,8 @@
 import { BaseLogger } from './interfaces/baselogger.inteface';
 import { info, error } from 'lambda-log';
+import { DataLogger } from './interfaces/datalogger.inteface';
 
-export const logger = (payload: any): BaseLogger => {
+export const logger = (payload: DataLogger): BaseLogger => {
   const { msg } = payload;
 
   if (msg.toLocaleLowerCase().includes('info')) {
