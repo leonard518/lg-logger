@@ -1,0 +1,21 @@
+name: "🟢 release"
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  release:
+    name: "release"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node: ["16.x"]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
+    steps:
+      - name: 🚀 publish
+        run: npm publis --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
