@@ -15,7 +15,8 @@
     "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "lint:fix": "tsdx lint --fix",
+    "prepare": "tsdx build && husky install",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
@@ -47,7 +48,7 @@
     "@size-limit/preset-small-lib": "^8.1.0",
     "@types/aws-lambda": "^8.10.108",
     "@types/lambda-log": "^2.2.1",
-    "husky": "^8.0.2",
+    "husky": "^8.0.0",
     "size-limit": "^8.1.0",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.1",
