@@ -35,7 +35,7 @@ jobs:
         run: npm run build
 
       - name: 🚀 publish
-        run: npm publish
+        run: npm publish --access public
         env:
           NODE_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
