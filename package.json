@@ -31,7 +31,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "lg-logger-v1",
+  "name": "lg-logger-v2",
   "author": "Leonard Gonzalez",
   "module": "dist/lg-logger.esm.js",
   "size-limit": [
