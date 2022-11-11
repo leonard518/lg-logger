@@ -36,6 +36,6 @@ jobs:
         run: npm run build
 
       - name: 🚀 publish
-        run: npm publis --access public
+        run: npm publis
         env:
           NODE_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
