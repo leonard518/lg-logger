@@ -1,13 +1,7 @@
-import { APIGatewayProxyEvent } from 'aws-lambda';
+import { APIGatewayProxyEvent, Context } from 'aws-lambda';
 
-export interface DataLogger extends APIGatewayProxyEvent {
+export interface DataLogger {
   msg: string;
-  version: string;
-  start_ts: number;
-  functionName: string;
-  functionVersion: string;
-  invokedFunctionArn: string;
-  routeKey: string;
-  rawPath: string;
-  rawQueryString: string;
+  event: APIGatewayProxyEvent;
+  context: Context;
 }
