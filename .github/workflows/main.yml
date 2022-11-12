@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - "main"
+
 jobs:
   build:
     name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
@@ -10,34 +11,33 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ['16.x']
+        node: ["16.x"]
         os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
-      - name: Checkout repo
+      - name: ✅ Checkout repo
         uses: actions/checkout@v2
 
-      - name: Use Node ${{ matrix.node }}
+      - name: 🟢 Use Node ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
+          registry-url: https://registry.npmjs.org/
 
-      - name: Install deps and build (with cache)
+      - name: ⏬ Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
 
-      - name: Lint
+      - name: 🧹 Lint
         run: npm run lint
 
-      - name: Test
-        run: npm run test --ci --coverage --maxWorkers=2
+      - name: 🐞 Test
+        run: npm run test -- --ci --coverage --maxWorkers=2
 
-      - name: Build
-        run: npm ci && npm run build
+      - name: 🛠️ Build
+        run: npm run build
 
       - name: 🚀 publish
-        run: npm publis --access public
+        run: npm publish --access public
         env:
-          NODE_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+          CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-          token: ${{ secrets.NPM_AUTH_TOKEN }}
