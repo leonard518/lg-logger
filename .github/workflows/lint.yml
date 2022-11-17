@@ -1,5 +1,8 @@
 name: Lint
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - "main"
 
 jobs:
   build:
@@ -21,9 +24,8 @@ jobs:
           node-version: ${{ matrix.node }}
           registry-url: https://registry.npmjs.org/
 
-      # - name: ⏬ Install deps and build (with cache)
-        # uses: bahmutov/npm-install@v1
+      - name: ⏬ Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
 
       - name: 🧹 Lint
         run: npm run lint
-
